@@ -132,12 +132,15 @@ public class LocalesActivity extends SherlockActivity {
 		SharedPreferences prefs = getSharedPreferences("UbicacionPreferences", Context.MODE_PRIVATE);
 		int indice = prefs.getInt("ubicacionActual", UbicacionActivity.VALENCIA);
 		String [] ciudades = getResources().getStringArray(R.array.ciudades);
-		ciudad = ciudades[indice];
+		String ciudadPreferencias = ciudades[indice];
+		
+		if (!ciudadPreferencias.equals(ciudad))			
+			new LocalesAsyncTask().execute();
+		
+		ciudad = ciudadPreferencias;
 		setTitle(ciudad);
 		
 		invalidateOptionsMenu();
-		
-		new LocalesAsyncTask().execute();
 		
 		super.onResume();
 	}
