@@ -7,14 +7,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.InputFilter.LengthFilter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.internal.widget.IcsAdapterView;
+//import com.actionbarsherlock.internal.widget.IcsAdapterView.OnItemLongClickListener;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
@@ -46,12 +51,18 @@ public class LocalesActivity extends SherlockActivity {
 			Bundle b = new Bundle();
 			b.putInt(Param.LOCAL_ID.toString(), local.getIdLocal());
 			b.putString(Param.LOCAL_NOMBRE.toString(), local.getNombreLocal());
+			//Vimop
+			b.putString("LATITUD",local.getLatitud());
+			b.putString("LONGITUD", local.getLongitud());
+			//FinVimop
 			i.putExtras(b);
 
 			startActivity(i);
 		}
 	};
 	
+	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater menuInflater = getSupportMenuInflater();
@@ -118,6 +129,7 @@ public class LocalesActivity extends SherlockActivity {
 				LocalesAdapter adapter = new LocalesAdapter(getApplicationContext(), R.layout.item_local, result);
 				gridView.setAdapter(adapter);
 				gridView.setOnItemClickListener(itemClickListener);
+				/*gridView.setOnItemLongClickListener(itemClickListenerLong);*/
 			} else {
 		        setContentView(R.layout.error_conexion);
 			}
