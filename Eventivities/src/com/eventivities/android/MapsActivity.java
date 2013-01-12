@@ -281,7 +281,7 @@ public class MapsActivity extends /*MapActivity*/SherlockMapActivity{
 
 	@Override
 	protected void onResume(){
-		invalidateOptionsMenu();
+		supportInvalidateOptionsMenu();
 		super.onResume();
 	}
 	

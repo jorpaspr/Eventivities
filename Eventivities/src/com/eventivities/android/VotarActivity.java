@@ -99,7 +99,7 @@ public class VotarActivity extends SherlockActivity {
 	@SuppressLint("NewApi")
 	@Override
 	protected void onResume(){
-		invalidateOptionsMenu();
+		supportInvalidateOptionsMenu();
 		leerPrefVotar();
 		if (heVotado){
 			EditText mTxt=(EditText) findViewById(R.id.votar_comentario);

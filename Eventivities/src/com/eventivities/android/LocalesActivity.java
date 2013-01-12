@@ -143,7 +143,7 @@ public class LocalesActivity extends SherlockActivity {
 		
 		setTitle(ciudad);
 		
-		invalidateOptionsMenu();
+		supportInvalidateOptionsMenu();
 		
 		super.onResume();
 	}

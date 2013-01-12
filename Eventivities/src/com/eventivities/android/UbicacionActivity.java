@@ -47,7 +47,7 @@ public class UbicacionActivity extends SherlockActivity {
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerCambiar);
 		spinner.setSelection(ciudad);
 
-		invalidateOptionsMenu(); 
+		supportInvalidateOptionsMenu(); 
 		super.onResume();
 	}
 	

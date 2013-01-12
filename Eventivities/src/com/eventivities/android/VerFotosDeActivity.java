@@ -21,7 +21,7 @@ public class VerFotosDeActivity extends SherlockActivity {
 	
 	@Override
 	protected void onResume(){
-		invalidateOptionsMenu();
+		supportInvalidateOptionsMenu();
 		super.onResume();
 	}
 	
