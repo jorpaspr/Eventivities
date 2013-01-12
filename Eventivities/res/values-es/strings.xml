@@ -40,6 +40,43 @@
 	
 	<!-- Strings para la clase ParticularizedOverlay diálogo -->
 	<string name="dialogoInfo_local_YES">OK</string>
+	
+	<!-- Strings de votar y ver comentarios -->
+	<string name="compartir">Comparte</string>
+    <string name="comentarios_Votar">Vota</string>
+    <string name="comentarios_ErrorBD">No se encuentra BD \n por favor, prueba mas tarde</string>
+    <string name="comentarios_NoHay">nadia ha escrito un comentario\n se el primero</string>
+    <string name="comentarios_NoHayComentarios">no puedo encontrar informacion\n por favor, prueba mas tarde</string>
+    <string name="votar_puntuacion">¿ Te gusto ?</string>
+    <string name="votar_miOpinion">Comenta con nosotros</string>
+    <string name="votar_botonVotar">Vota</string>
+    <string name="votar_compartir_heEstado">He estado en </string>
+    <string name="votar_compartir_viendo">viendo</string>
+    <string name="votar_compartir_ceroEstrella">y no me gusto</string>
+    <string name="votar_compartir_unaEstrella">y se puede ver</string>
+    <string name="votar_compartir_dosEstrella">y esta bastante bien</string>
+    <string name="votar_compartir_tresEstrella">y me gusto</string>
+    <string name="votar_compartir_cuatroEstrella">y me gusto mucho</string>
+    <string name="votar_compartir_cincoEstrella">y me parecio excelente</string>
+    <string name="votar_compartir_sinComentario"> - sin comentarios -</string>
+    <string name="votar_noEstaLoginDialogTitulo"> ¿Login?</string>
+    <string name="votar_noEstaLoginDialogTitulo_texto">  Solo puedes Votar \n  si has hecho login  </string>
+    <string name="votar_noEstaLoginDialogTitulo_botonSi"> Login  </string>
+    <string name="votar_noEstaLoginDialogTitulo_botonNo"> Cancelar </string>
+	<string name="votar_noEstaLoginDialogNoSePuedeVotarTitulo"> No puedo Votar  </string>    
+	<string name="votar_noEstaLoginDialogNoSePuedeVotarTexto"> un error ha ocurrido \n y no puedes votar ahora \n\n intentalo luego, gracias \n </string>
+	<string name="votar_noEstaLoginDialogNoSePuedeVotarBoton"> Continuar </string>
+	<string name="votar_soloSePuedeVotarUnaVez"> Solo un Voto </string>
+	<string name="votar_tuYaHasVotado"> y tu ya has votado\n a este evento </string>
+	
+	<string name="votar_ErrorAlVotarTitulo"> Error  </string>		
+	<string name="votar_ErrorAlVotarTxt"> Ha ocurrido un error mientras se intentaba guardar el voto\n\n espera unos momentos y prueba de nuevo, gracias </string>
+	<string name="votar_ErrorAlVotarBoton"> Continue </string>
+	    	    
+	<string name="votar_ExitoAlVotar"> Tu voto y comentario se ha guardado \n\n gracias por compartir tu opinin </string>
+	<string name="votar_VotoOk"> guardado </string>
+	
+	<string name="detalle_eventoBotonComentarios">Ver comentarios</string>
 	         
     <!--Strings de activity_mi_perfil.xml  -->
     <string name="textUserName">Usuario:</string>
