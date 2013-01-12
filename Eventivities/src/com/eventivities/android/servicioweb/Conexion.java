@@ -38,6 +38,9 @@ import com.google.gson.GsonBuilder;
 public class Conexion {
 	
 	public static final String TODAS_CATEGORIAS = "0";
+	public static final String CATEGORIA_TEATRO = "1";
+	public static final String CATEGORIA_CINE = "2";
+	
 	
 	/*obtenerlocalesciudad
 	 * obtenerpuntuacioneslocal

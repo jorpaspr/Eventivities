@@ -94,4 +94,7 @@
     <string name="textoBotonContinuar">Accept</string>
     <string name="textoBotonCancelar">Cancel</string>
     <string name="textAliasDuplicado">Duplicate Community Nickname. Another user has already selected this nickname.\nPlease select another.</string>
+    <!-- Strings botones LocalesActivity -->
+    <string name="textoTeatro">Theatres</string>
+    <string name="textoCines">Cinemas</string>
 </resources>
