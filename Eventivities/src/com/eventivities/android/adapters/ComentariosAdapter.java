@@ -52,6 +52,12 @@ public class ComentariosAdapter extends ArrayAdapter<Comentario> {
 				tUser.setText(tDato);
 			else
 				tUser.setText("-");
+			
+			TextView textViewFecha = (TextView)view.findViewById(R.id.textViewFecha_itemComentario);
+			textViewFecha.setText(String.format(ViewUtil.FORMATO_FECHA_HORA, comentario.getFechaComentario()));
+			
+			TextView textViewPuntTextView = (TextView)view.findViewById(R.id.textViewPuntuacion_itemComentario);
+			textViewPuntTextView.setText(ViewUtil.obtenerEstrellas(comentario.getPuntuacion()));
 		}
 		return view;
 	}

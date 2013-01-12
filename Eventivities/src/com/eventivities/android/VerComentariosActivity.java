@@ -139,6 +139,7 @@ public class VerComentariosActivity extends SherlockActivity{
 				String n=String.valueOf(evento.getIdEvento());
 				comentarios = Conexion.obtenerComentariosEvento(n).getComentarios();
 			} catch (ExcepcionAplicacion e) {
+				comentarios = null;
 				e.printStackTrace();
 			}
 			return comentarios ;

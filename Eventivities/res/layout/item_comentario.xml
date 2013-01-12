@@ -18,6 +18,28 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp" >
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/comentario_item_usuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+        			android:layout_alignParentLeft="true"
+                    android:text="_Usuario"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/textViewFecha_itemComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+        			android:layout_alignParentRight="true"
+                    android:text="_Fecha"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/comentario_item_comentario"
                 android:layout_width="match_parent"
@@ -29,10 +51,10 @@
                 android:textColorHint="@color/azul_claro" />
 
             <TextView
-                android:id="@+id/comentario_item_usuario"
+                android:id="@+id/textViewPuntuacion_itemComentario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Small Text"
+                android:text="☆☆☆☆☆"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 

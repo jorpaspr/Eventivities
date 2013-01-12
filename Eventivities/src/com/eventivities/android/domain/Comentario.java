@@ -1,11 +1,15 @@
 package com.eventivities.android.domain;
 
+import java.util.Date;
+
 public class Comentario {
 	private int idComentario=0;
 	private String comentario="";
 	private int idEvento=0;
 	private int idUsuario=0;
 	private String alias="";
+	private int puntuacion = 0;
+	private Date fechaComentario = null;
 	
 	public String getAlias() {
 		return alias;
@@ -36,5 +40,17 @@ public class Comentario {
 	}
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+	public int getPuntuacion() {
+		return puntuacion;
+	}
+	public void setPuntuacion(int puntuacion) {
+		this.puntuacion = puntuacion;
+	}
+	public Date getFechaComentario() {
+		return fechaComentario;
+	}
+	public void setFechaComentario(Date fechaComentario) {
+		this.fechaComentario = fechaComentario;
 	}	
 }

@@ -124,6 +124,7 @@ public class EventosActivity extends SherlockActivity {
 			try {
 				eventos = Conexion.obtenerEventosLocal(localId).getEventos();
 			} catch (ExcepcionAplicacion e) {
+				eventos = null;
 				e.printStackTrace();
 			}
 			return eventos;

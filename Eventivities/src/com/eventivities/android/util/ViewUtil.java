@@ -7,8 +7,9 @@ import java.util.Date;
  *
  */
 public class ViewUtil {
-	
+
 	public static final String FORMATO_FECHA = "%1$te/%1$tm/%1$tY";
+	public static final String FORMATO_FECHA_HORA = "%1$te/%1$tm/%1$tY %1$tk:%1$tM";
 	
 	/**
 	 * Formatea un rango de fechas a partir de dos fechas y el formato escogido.
