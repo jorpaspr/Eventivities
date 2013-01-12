@@ -383,9 +383,8 @@ public class VotarActivity extends SherlockActivity {
 	private int queidUsusario(){
 	   /*IDUSUARIO*/
 		int i;
-		return 4;
-		//SharedPreferences prefs = getSharedPreferences("LogInPreferences", Context.MODE_PRIVATE);
-		//return prefs.getInt("logIdUsuario", -1);
+		SharedPreferences prefs = getSharedPreferences("LogInPreferences", Context.MODE_PRIVATE);
+		return TnUtil.queNumero(prefs.getString("idUsuario","-4"));
 	}
 	
 	private class VotarAsyncTask extends AsyncTask<Void,Void,Boolean> {
