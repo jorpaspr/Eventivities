@@ -57,7 +57,8 @@
         android:layout_alignRight="@+id/votar_ratingBar"
         android:layout_below="@+id/votar_ratingBar"
         android:text="TextView"
-        android:textColor="@color/gris_medio" />
+        android:textColor="@color/gris_medio_claro"
+        android:textColorLink="@color/gris_medio_claro" />
 
     <Button
         android:id="@+id/votar_botonVotar"
