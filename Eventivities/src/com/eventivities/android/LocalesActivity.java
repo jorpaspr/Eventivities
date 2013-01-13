@@ -5,14 +5,15 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Spinner;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -28,6 +29,7 @@ public class LocalesActivity extends SherlockActivity {
 
 	private List<Local> locales = null;
 	private String ciudad;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +97,10 @@ public class LocalesActivity extends SherlockActivity {
 
 		@Override
 		protected List<Local> doInBackground(Void... params) {
+			SharedPreferences prefs = getSharedPreferences("TipoCategoria", Context.MODE_PRIVATE);
+			String categoria = prefs.getString("Categoria", Conexion.CATEGORIA_TEATRO);
 			try {				
-				locales = Conexion.obtenerLocalesCiudad(ciudad).getLocales();
+				locales = Conexion.obtenerLocalesCiudad(ciudad, categoria).getLocales();
 			} catch (ExcepcionAplicacion e) {
 				locales = null;
 				e.printStackTrace();
@@ -107,17 +111,35 @@ public class LocalesActivity extends SherlockActivity {
 		@Override
 		protected void onPostExecute(List<Local> result) {
 			if (result != null) {
-				setContentView(R.layout.activity_locales);		        
-		        Spinner spinner = (Spinner) findViewById(R.id.spinner1);
-				ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(LocalesActivity.this,
-						R.array.tipo_local, android.R.layout.simple_spinner_item);
-				arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-				spinner.setAdapter(arrayAdapter);
-				
+				setContentView(R.layout.activity_locales);	
 				GridView gridView = (GridView) findViewById(R.id.GridViewLocales);
 				LocalesAdapter adapter = new LocalesAdapter(getApplicationContext(), R.layout.item_local, result);
 				gridView.setAdapter(adapter);
 				gridView.setOnItemClickListener(itemClickListener);
+				
+				Button btnTeatro = (Button) findViewById(R.id.buttonTeatro);
+				btnTeatro.setOnClickListener(new OnClickListener(){
+					public void onClick(View v){
+						SharedPreferences prefs = getSharedPreferences("TipoCategoria", Context.MODE_PRIVATE);
+						Editor editor = prefs.edit();
+						
+						editor.putString("Categoria", Conexion.CATEGORIA_TEATRO);
+						editor.commit();
+						new LocalesAsyncTask().execute();
+					}					
+				});
+				
+				Button btnCines = (Button) findViewById(R.id.buttonCines);
+				btnCines.setOnClickListener(new OnClickListener(){
+					public void onClick(View v){
+						SharedPreferences prefs = getSharedPreferences("TipoCategoria", Context.MODE_PRIVATE);
+						Editor editor = prefs.edit();						
+						editor.putString("Categoria", Conexion.CATEGORIA_CINE);
+						editor.commit();
+						new LocalesAsyncTask().execute();
+					}
+				});
+				
 			} else {
 		        setContentView(R.layout.error_conexion);
 			}
