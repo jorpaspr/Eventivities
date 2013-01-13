@@ -14,8 +14,11 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -37,12 +40,14 @@ public class EventosActivity extends SherlockActivity {
 	private String longitudDestino;
 	private String latitudDestino;
 	//FinVimop
+	private ImageButton btnRutas;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		getSupportActionBar().setHomeButtonEnabled(true);
-        
+		btnRutas = (ImageButton) findViewById(R.id.imageButtonRuta);
         Bundle extras = getIntent().getExtras();
 		if(extras != null)
 		{
@@ -55,6 +60,14 @@ public class EventosActivity extends SherlockActivity {
 			//FinVimop
 			//ORIGINAL setTitle(extras.getString(Param.LOCAL_NOMBRE.toString()));
 		}
+		
+		btnRutas.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				rutaMaps();			
+			}
+		});
 		
 		new EventosAsyncTask().execute();
     }
@@ -94,11 +107,8 @@ public class EventosActivity extends SherlockActivity {
 			new EventosAsyncTask().execute();
 			break;
 		case R.id.menu_location:
-			//Vimop
-			rutaMaps();
-			//FinVimop
-			/*startActivity(new Intent(EventosActivity.this, UbicacionActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));*/
+			startActivity(new Intent(EventosActivity.this, UbicacionActivity.class)
+			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 			break;
 		}
 		
