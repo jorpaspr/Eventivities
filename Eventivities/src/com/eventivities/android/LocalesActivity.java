@@ -87,6 +87,29 @@ public class LocalesActivity extends SherlockActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	/**
+	 * Método que actualiza la apariencia de los botones de Teatro y Cine cuando se pulsa uno de ellos.
+	 * 
+	 * @author emilio
+	 * @param No precisa de parámetros de entrada.
+	 * @return No retorna ningún valor. Actualiza el estado de la interfaz gráfica.
+	 * 
+	 * */
+	private void actualizarAparienciaBotones(){
+		SharedPreferences prefs = getSharedPreferences("TipoCategoria", Context.MODE_PRIVATE);
+		String categoria = prefs.getString("Categoria", Conexion.CATEGORIA_TEATRO);
+		Button btnTeatro = (Button) findViewById(R.id.buttonTeatro);
+		Button btnCine = (Button) findViewById(R.id.buttonCines);
+		
+		if(categoria.equals(Conexion.CATEGORIA_TEATRO)){
+			btnTeatro.setBackgroundColor(getResources().getColor(R.color.fondoBlanco));
+			btnCine.setBackgroundColor(getResources().getColor(R.color.fondoGris));
+		}else if (categoria.equals(Conexion.CATEGORIA_CINE)){
+			btnCine.setBackgroundColor(getResources().getColor(R.color.fondoBlanco));
+			btnTeatro.setBackgroundColor(getResources().getColor(R.color.fondoGris));
+		}
+	}
+	
 	private class LocalesAsyncTask extends AsyncTask<Void, Void, List<Local>> {
 
 		@Override
@@ -139,7 +162,7 @@ public class LocalesActivity extends SherlockActivity {
 						new LocalesAsyncTask().execute();
 					}
 				});
-				
+				actualizarAparienciaBotones();
 			} else {
 		        setContentView(R.layout.error_conexion);
 			}
