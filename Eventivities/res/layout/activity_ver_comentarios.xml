@@ -1,86 +1,21 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VerComentarios" >
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/comentarios_listView" >
-
-        <ImageView
-            android:id="@+id/comentarios_imagenEvento"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:paddingRight="20dp"
-            android:src="@drawable/masks" />
-        <TextView
-            android:id="@+id/comentarios_nombreTeatro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/comentarios_imagenEvento"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:maxLines="2"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/comentarios_textViewPuntEvento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/comentarios_imagenEvento"
-            android:layout_toRightOf="@+id/comentarios_imagenEvento"
-            android:onClick="verComentarios"
-            android:text="★★★☆☆"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/estrella_puntuaciones" />
-
-        <TextView
-            android:id="@+id/comentarios_nombreEvento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/comentarios_nombreTeatro"
-            android:layout_centerVertical="true"
-            android:maxLines="2"
-            android:text="Nombre Evento"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
+    android:gravity="center"
+    android:orientation="vertical" >
+    
+      <ImageButton
+        android:id="@+id/imageButtonRuta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeLayout1"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ruta"
+        />
 
-        
-        android:orientation="vertical" >
+    <ListView android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 
-        <ListView
-            android:id="@+id/comentarios_listView"
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:footerDividersEnabled="true"
-            android:headerDividersEnabled="true" >
-
-        </ListView>
-    
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/comentarios_votar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="aVotar"
-        android:text="@string/comentarios_Votar" />
-
-    
-
-</RelativeLayout>
+</LinearLayout>
