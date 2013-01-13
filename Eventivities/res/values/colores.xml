@@ -29,6 +29,8 @@
    <color name="estrella_puntuaciones_ORIGINAL">#FFD700</color>
    <color name="estrella_puntuaciones">#595990</color>
 
+   <color name="fondoBlanco">#FFFFFF</color>
+   <color name="fondoGris">#C0C0C0</color>
    
    <!-- 
    <color name="bot_fondo_normal">#D3D3D3</color>
