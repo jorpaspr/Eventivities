@@ -81,7 +81,7 @@ public class MapsActivity extends /*MapActivity*/SherlockMapActivity{
  		else{
  				
  			AlertDialog.Builder dialogoGps = new AlertDialog.Builder(this);  
- 	        dialogoGps.setTitle(R.string.mensaje_dialogo_gps);  
+ 	        dialogoGps.setTitle(R.string.Titulo_dialogo_gps);  
  	        dialogoGps.setMessage(R.string.mensaje_dialogo_gps);            
  	        dialogoGps.setCancelable(false); 
  	        dialogoGps.setIcon(R.drawable.icongps);
