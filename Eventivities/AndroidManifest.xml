@@ -36,10 +36,6 @@
             android:label="@string/title_activity_mi_perfil" >
         </activity>
         <activity
-            android:name="com.eventivities.android.RegistrarseActivity"
-            android:label="@string/title_activity_registrarse" >
-        </activity>
-        <activity
             android:name="com.eventivities.android.EventosActivity"
             android:label="@string/title_activity_eventos" >
         </activity>
@@ -50,10 +46,6 @@
         <activity
             android:name="com.eventivities.android.UbicacionActivity"
             android:label="@string/title_activity_ubicacion" >
-        </activity>
-        <activity
-            android:name="com.eventivities.android.VerFotosDeActivity"
-            android:label="@string/title_activity_ver_fotos_de" >
         </activity>
         <activity
             android:name="com.eventivities.android.DetalleEventoActivity"
