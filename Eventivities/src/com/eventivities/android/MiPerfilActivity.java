@@ -118,17 +118,11 @@ public class MiPerfilActivity extends SherlockActivity {
 			}
 
 			@Override
-			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void afterTextChanged(Editable s) {}
 
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-				
-			}
+					int after) {}
 
 		});
 		
@@ -149,17 +143,12 @@ public class MiPerfilActivity extends SherlockActivity {
 			}
 
 			@Override
-			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-				
+			public void afterTextChanged(Editable s) {		
 			}
 
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-				
-			}
+					int after) {}
 
 		});
 	}
@@ -180,13 +169,11 @@ public class MiPerfilActivity extends SherlockActivity {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 	}
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		cargarPreferencias();
 		super.onResume();
 	}
@@ -363,13 +350,11 @@ public class MiPerfilActivity extends SherlockActivity {
 		@Override
 		protected void onPreExecute(){
 			getSherlock().setProgressBarIndeterminateVisibility(true);
-			//Toast.makeText(context, "Conectando con el servidor", Toast.LENGTH_LONG).show(); //TODO provisional
 			super.onPreExecute();
 		}
 		
 		@Override
 		protected void onPostExecute(Integer result) {
-			// TODO Auto-generated method stub
 			getSherlock().setProgressBarIndeterminateVisibility(false);
 			String mensaje;
 			//result vale -1 si la identificación es errónea, un -2 si hay un error con el servidor
@@ -396,7 +381,6 @@ public class MiPerfilActivity extends SherlockActivity {
 
 		@Override
 		protected Integer doInBackground(Void... arg0) {
-			// TODO Auto-generated method stub
 			Integer resultado = 0;
 			try{
 				String hashPass = String.valueOf(pass.hashCode());

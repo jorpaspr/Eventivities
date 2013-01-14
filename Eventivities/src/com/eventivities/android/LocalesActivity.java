@@ -5,14 +5,17 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputFilter.LengthFilter;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -96,6 +99,29 @@ public class LocalesActivity extends SherlockActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+		/**
+	 * Método que actualiza la apariencia de los botones de Teatro y Cine cuando se pulsa uno de ellos.
+	 * 
+	 * @author emilio
+	 * @param No precisa de parámetros de entrada.
+	 * @return No retorna ningún valor. Actualiza el estado de la interfaz gráfica.
+	 * 
+	 * */
+	private void actualizarAparienciaBotones(){
+		SharedPreferences prefs = getSharedPreferences("TipoCategoria", Context.MODE_PRIVATE);
+		String categoria = prefs.getString("Categoria", Conexion.CATEGORIA_TEATRO);
+		Button btnTeatro = (Button) findViewById(R.id.buttonTeatro);
+		Button btnCine = (Button) findViewById(R.id.buttonCines);
+		
+		if(categoria.equals(Conexion.CATEGORIA_TEATRO)){
+			btnTeatro.setBackgroundColor(getResources().getColor(R.color.fondoBlanco));
+			btnCine.setBackgroundColor(getResources().getColor(R.color.fondoGris));
+		}else if (categoria.equals(Conexion.CATEGORIA_CINE)){
+			btnCine.setBackgroundColor(getResources().getColor(R.color.fondoBlanco));
+			btnTeatro.setBackgroundColor(getResources().getColor(R.color.fondoGris));
+		}
+	}
+	
 	private class LocalesAsyncTask extends AsyncTask<Void, Void, List<Local>> {
 
 		@Override
@@ -129,7 +155,29 @@ public class LocalesActivity extends SherlockActivity {
 				LocalesAdapter adapter = new LocalesAdapter(getApplicationContext(), R.layout.item_local, result);
 				gridView.setAdapter(adapter);
 				gridView.setOnItemClickListener(itemClickListener);
-				/*gridView.setOnItemLongClickListener(itemClickListenerLong);*/
+				Button btnTeatro = (Button) findViewById(R.id.buttonTeatro);
+				btnTeatro.setOnClickListener(new OnClickListener(){
+					public void onClick(View v){
+						SharedPreferences prefs = getSharedPreferences("TipoCategoria", Context.MODE_PRIVATE);
+						Editor editor = prefs.edit();
+						
+						editor.putString("Categoria", Conexion.CATEGORIA_TEATRO);
+						editor.commit();
+						new LocalesAsyncTask().execute();
+					}					
+				});
+				
+				Button btnCines = (Button) findViewById(R.id.buttonCines);
+				btnCines.setOnClickListener(new OnClickListener(){
+					public void onClick(View v){
+						SharedPreferences prefs = getSharedPreferences("TipoCategoria", Context.MODE_PRIVATE);
+						Editor editor = prefs.edit();						
+						editor.putString("Categoria", Conexion.CATEGORIA_CINE);
+						editor.commit();
+						new LocalesAsyncTask().execute();
+					}
+				});
+				actualizarAparienciaBotones();
 			} else {
 		        setContentView(R.layout.error_conexion);
 			}

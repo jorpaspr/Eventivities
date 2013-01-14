@@ -54,7 +54,7 @@ public class VotarActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_votar);
 		
-		TextView mTxt=(TextView) findViewById(R.id.votar_comentario);
+		TextView mTxt=(TextView) findViewById(R.id.votar_cuantasLetrasQuedan);
 		mTxt.setText("");
 		
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -393,6 +393,7 @@ public class VotarActivity extends SherlockActivity {
 		EditText mTxt=(EditText) findViewById(R.id.votar_comentario);
 		RatingBar mRat=(RatingBar) findViewById(R.id.votar_ratingBar);
 		Button bVotar = (Button) findViewById(R.id.votar_botonVotar);
+		
 		int idUsuario=queidUsusario();
 		@Override
 		protected void onPreExecute() {
@@ -440,7 +441,7 @@ public class VotarActivity extends SherlockActivity {
 				}
 				if (result && !errorBD) {
 					Toast.makeText(getBaseContext(),getString(R.string.votar_ExitoAlVotar),Toast.LENGTH_SHORT).show();
-					TextView mTxt=(TextView) findViewById(R.id.votar_comentario);
+					TextView mTxt=(TextView) findViewById(R.id.votar_cuantasLetrasQuedan);
 					mTxt.setText(getString(R.string.votar_VotoOk));
 				}
 			}
