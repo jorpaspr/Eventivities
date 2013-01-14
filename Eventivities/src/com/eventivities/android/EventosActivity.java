@@ -34,14 +34,12 @@ public class EventosActivity extends SherlockActivity {
 	
 	private List<Evento> eventos = null;
 	private int localId;
-	private String nombreLocal ;  // se necesita para pasarle el nombre a votar
-	//Vimop
+	private String nombreLocal ; 
 	private LocationListener miLocationListener;
 	private LocationManager milocManager;
 	private String longitudDestino;
 	private String latitudDestino;
 	private Button btnRutas;
-	//FinVimop
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +54,9 @@ public class EventosActivity extends SherlockActivity {
 			localId = extras.getInt(Param.LOCAL_ID.toString());
 			nombreLocal=extras.getString(Param.LOCAL_NOMBRE.toString());
 			setTitle(nombreLocal);
-			//Vimop
 			longitudDestino= extras.getString("LONGITUD");
 			latitudDestino= extras.getString("LATITUD");
-			//FinVimop
-			//ORIGINAL setTitle(extras.getString(Param.LOCAL_NOMBRE.toString()));
+
 		}
 		
 		
@@ -213,7 +209,7 @@ public class EventosActivity extends SherlockActivity {
 	};
 	
 	private void abrirComentarios(View v){
-		// de momento solo en el detalle de obra.
+
 		
 	}
 	
