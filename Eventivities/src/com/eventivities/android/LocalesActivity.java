@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.internal.widget.IcsAdapterView;
-//import com.actionbarsherlock.internal.widget.IcsAdapterView.OnItemLongClickListener;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
@@ -54,10 +53,10 @@ public class LocalesActivity extends SherlockActivity {
 			Bundle b = new Bundle();
 			b.putInt(Param.LOCAL_ID.toString(), local.getIdLocal());
 			b.putString(Param.LOCAL_NOMBRE.toString(), local.getNombreLocal());
-			//Vimop
+
 			b.putString("LATITUD",local.getLatitud());
 			b.putString("LONGITUD", local.getLongitud());
-			//FinVimop
+
 			i.putExtras(b);
 
 			startActivity(i);
@@ -132,8 +131,10 @@ public class LocalesActivity extends SherlockActivity {
 
 		@Override
 		protected List<Local> doInBackground(Void... params) {
+			SharedPreferences prefs = getSharedPreferences("TipoCategoria", Context.MODE_PRIVATE);
+			String categoria = prefs.getString("Categoria", Conexion.CATEGORIA_TEATRO);
 			try {				
-				locales = Conexion.obtenerLocalesCiudad(ciudad).getLocales();
+				locales = Conexion.obtenerLocalesCiudad(ciudad, categoria).getLocales();
 			} catch (ExcepcionAplicacion e) {
 				locales = null;
 				e.printStackTrace();
