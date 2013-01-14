@@ -37,18 +37,20 @@ public class EventosActivity extends SherlockActivity {
 	private String nombreLocal ;  // se necesita para pasarle el nombre a votar
 	//Vimop
 	private LocationListener miLocationListener;
+	private LocationManager milocManager;
 	private String longitudDestino;
 	private String latitudDestino;
+	private Button btnRutas;
 	//FinVimop
-	private ImageButton btnRutas;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		getSupportActionBar().setHomeButtonEnabled(true);
-		btnRutas = (ImageButton) findViewById(R.id.imageButtonRuta);
+		
         Bundle extras = getIntent().getExtras();
+        
 		if(extras != null)
 		{
 			localId = extras.getInt(Param.LOCAL_ID.toString());
@@ -61,13 +63,8 @@ public class EventosActivity extends SherlockActivity {
 			//ORIGINAL setTitle(extras.getString(Param.LOCAL_NOMBRE.toString()));
 		}
 		
-		btnRutas.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				rutaMaps();			
-			}
-		});
+		
+
 		
 		new EventosAsyncTask().execute();
     }
@@ -75,6 +72,13 @@ public class EventosActivity extends SherlockActivity {
 	@Override
 	protected void onResume(){
 		supportInvalidateOptionsMenu();
+		if (miLocationListener == null){
+			super.onPause();
+		}
+		else{
+				super.onPause();
+				milocManager.removeUpdates(miLocationListener);
+		}
 		super.onResume();
 	}
 	
@@ -119,7 +123,7 @@ public class EventosActivity extends SherlockActivity {
 	private void rutaMaps(){
 		
 		
-	LocationManager milocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+	milocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		 
    	 if (milocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
 			miLocationListener = new MiLocationListener();
@@ -237,6 +241,14 @@ public class EventosActivity extends SherlockActivity {
 		protected void onPostExecute(List<Evento> result) {
 			if (result != null) {
 				setContentView(R.layout.activity_eventos);
+				btnRutas = (Button) findViewById(R.id.buttonRuta);
+				btnRutas.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						rutaMaps();			
+					}
+				});
 				ListView listView = (ListView) findViewById(android.R.id.list);
 				listView.setOnItemClickListener(itemClickListener);
 				EventosAdapter adapter = new EventosAdapter(getApplicationContext(), R.layout.item_evento, eventos);
