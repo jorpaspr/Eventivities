@@ -22,6 +22,7 @@
     <string name="boton_maps">Mostrar lugares cercanos</string>
     <string name="formato_hora_inicio">Hora de inicio: %s</string>
     <string name="formato_duracion">Duración: %s minutos</string>
+    <string name="ruta"></string>
     
     <!-- Strings para la clase GPS diálogo -->
 	<string name="gps_signal_not_found">Señal GPS no encontrada</string>	
