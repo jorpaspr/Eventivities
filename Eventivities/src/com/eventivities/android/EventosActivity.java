@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -18,19 +17,16 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import com.actionbarsherlock.app.SherlockActivity;
+
 import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 import com.eventivities.android.adapters.EventosAdapter;
 import com.eventivities.android.domain.Evento;
 import com.eventivities.android.excepciones.ExcepcionAplicacion;
 import com.eventivities.android.servicioweb.Conexion;
 
-public class EventosActivity extends SherlockActivity {
+public class EventosActivity extends BaseActivity {
 	
 	private List<Evento> eventos = null;
 	private int localId;
@@ -43,9 +39,8 @@ public class EventosActivity extends SherlockActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		getSupportActionBar().setHomeButtonEnabled(true);
+		super.onCreate(savedInstanceState);
 		
         Bundle extras = getIntent().getExtras();
         
@@ -59,80 +54,48 @@ public class EventosActivity extends SherlockActivity {
 
 		}
 		
-		
-
-		
 		new EventosAsyncTask().execute();
     }
 	
 	@Override
 	protected void onResume(){
-		supportInvalidateOptionsMenu();
+		super.onResume();
 		if (miLocationListener == null){
 			super.onPause();
 		}
 		else{
-				super.onPause();
-				milocManager.removeUpdates(miLocationListener);
+			super.onPause();
+			milocManager.removeUpdates(miLocationListener);
 		}
-		super.onResume();
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getSupportMenuInflater();
-		menuInflater.inflate(R.menu.general, menu);
+		super.onCreateOptionsMenu(menu);
 		menu.findItem(R.id.menu_refresh).setVisible(true);
-		SharedPreferences prefs = getSharedPreferences("LogInPreferences", Context.MODE_PRIVATE);
-		boolean login = prefs.getBoolean("logIn", false);
-		if(login)
-			menu.findItem(R.id.menu_login).setTitle(prefs.getString("usuarioActual", getString(R.string.menu_login).toUpperCase()));
-		else 
-			menu.findItem(R.id.menu_login).setTitle(getString(R.string.menu_login));
 		return true;
 	}
-
+	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			startActivity(new Intent(EventosActivity.this, LocalesActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-			break;
-		case R.id.menu_login:
-			startActivity(new Intent(EventosActivity.this, MiPerfilActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-			break;
-		case R.id.menu_refresh:
-			new EventosAsyncTask().execute();
-			break;
-		case R.id.menu_location:
-			startActivity(new Intent(EventosActivity.this, UbicacionActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-			break;
-		}
-		
-		return super.onOptionsItemSelected(item);
+	protected void refresh() {
+		super.refresh();
+		new EventosAsyncTask().execute();
 	}
-	
-	
+
 	private void rutaMaps(){
 		
-		
-	milocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-		 
-   	 if (milocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+		milocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+			 
+		if (milocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
 			miLocationListener = new MiLocationListener();
-			milocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, miLocationListener);
-						
+			milocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, miLocationListener);					
 		}
-   	 else if (milocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+	   	else if (milocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 			miLocationListener = new MiLocationListener();
 			milocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, miLocationListener);
-						
-	}
-	else{
-				
+		}
+		else
+		{				
 			AlertDialog.Builder dialogoGps = new AlertDialog.Builder(this);  
 	        dialogoGps.setTitle(R.string.Titulo_dialogo_gps);  
 	        dialogoGps.setMessage(R.string.mensaje_dialogo_gps);            
@@ -150,45 +113,45 @@ public class EventosActivity extends SherlockActivity {
 	                dialogoGps.dismiss();
 	            }  
 	        });            
-	        dialogoGps.show();        
-	    }//del else
+	        dialogoGps.show();
+		}//del else
 	}
    	   	 
      
- private  class MiLocationListener implements LocationListener{
+	private  class MiLocationListener implements LocationListener{
     			
-			/**
-			 * Método que se encarga de obtener las coordenadas gps y llamar
-			 * al servicio de google para dibujar la ruta
-			 *  
-			 *  @author vimopre 
-			 *  @param loc donde se encuentran las coordendas gps
-			 */
+		/**
+		 * Mï¿½todo que se encarga de obtener las coordenadas gps y llamar
+		 * al servicio de google para dibujar la ruta
+		 *  
+		 *  @author vimopre 
+		 *  @param loc donde se encuentran las coordendas gps
+		 */
+		
+        public void onLocationChanged(Location loc){
+
+        /*
+         * Para obtener la ruta a pie, pasado por la web de google no hace falta formatear
+         * loc.getLXXX() * 1E6;  <- no hace falta.
+         */
+        	
+    	 double latActual = loc.getLatitude();
+    	 double lonActual = loc.getLongitude();
 			
-	        public void onLocationChanged(Location loc){
+		 String uri = "http://maps.google.com/maps?saddr="+latActual+","+lonActual+"&daddr="+latitudDestino+","+longitudDestino;
+    	 Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+    	 intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+    	 startActivity(intent);
 
-	        /*
-	         * Para obtener la ruta a pie, pasado por la web de google no hace falta formatear
-	         * loc.getLXXX() * 1E6;  <- no hace falta.
-	         */
-	        	
-	    	 double latActual = loc.getLatitude();
-	    	 double lonActual = loc.getLongitude();
-				
-			 String uri = "http://maps.google.com/maps?saddr="+latActual+","+lonActual+"&daddr="+latitudDestino+","+longitudDestino;
-	    	 Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
-	    	 intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-	    	 startActivity(intent);
-
-	        }
-	        public void onProviderDisabled(String provider){
-	        
-	        }
-	        public void onProviderEnabled(String provider){
-	        
-	        }
-	        public void onStatusChanged(String provider, int status, Bundle extras){}
-	    }
+        }
+        public void onProviderDisabled(String provider){
+        
+        }
+        public void onProviderEnabled(String provider){
+        
+        }
+        public void onStatusChanged(String provider, int status, Bundle extras){}
+    }
 	 
 	 //FinVimop
     
@@ -207,11 +170,6 @@ public class EventosActivity extends SherlockActivity {
 			startActivity(i);
 		}
 	};
-	
-	private void abrirComentarios(View v){
-
-		
-	}
 	
 	
 	private class EventosAsyncTask extends AsyncTask<Void, Void, List<Evento>> {

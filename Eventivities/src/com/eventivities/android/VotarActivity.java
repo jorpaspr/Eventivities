@@ -19,18 +19,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-
 import com.eventivities.android.domain.Evento;
 import com.eventivities.android.excepciones.ExcepcionAplicacion;
 import com.eventivities.android.servicioweb.Conexion;
 import com.eventivities.android.util.ImageAsyncHelper;
+import com.eventivities.android.util.ImageAsyncHelper.ImageAsyncHelperCallBack;
 import com.eventivities.android.util.TnUtil;
 import com.eventivities.android.util.ViewUtil;
-import com.eventivities.android.util.ImageAsyncHelper.ImageAsyncHelperCallBack;
 /**
  * Actividad encargada del Voto y compartir 
  * 
@@ -40,7 +35,7 @@ import com.eventivities.android.util.ImageAsyncHelper.ImageAsyncHelperCallBack;
  * @see Actividades
  * */
 
-public class VotarActivity extends SherlockActivity {
+public class VotarActivity extends BaseActivity {
 	private boolean heVotado=false;
 	private Evento evento;
 	private String nombreLocal;
@@ -56,8 +51,7 @@ public class VotarActivity extends SherlockActivity {
 		
 		TextView mTxt=(TextView) findViewById(R.id.votar_cuantasLetrasQuedan);
 		mTxt.setText("");
-		
-		getSupportActionBar().setHomeButtonEnabled(true);
+
         Bundle extras = getIntent().getExtras();
         
 		TextView nomL=(TextView) findViewById(R.id.votar_nombreTeatro);
@@ -99,7 +93,8 @@ public class VotarActivity extends SherlockActivity {
 	@SuppressLint("NewApi")
 	@Override
 	protected void onResume(){
-		supportInvalidateOptionsMenu();
+		super.onResume();
+		
 		leerPrefVotar();
 		if (heVotado){
 			EditText mTxt=(EditText) findViewById(R.id.votar_comentario);
@@ -108,9 +103,7 @@ public class VotarActivity extends SherlockActivity {
 			mTxt.setEnabled(false);
 			mRat.setEnabled(false);
 			bVotar.setEnabled(false);
-		}
-		
-		super.onResume();
+		}		
 	}
 	
 	@Override
@@ -127,40 +120,6 @@ public class VotarActivity extends SherlockActivity {
 			iniciarPrefVotar();
 		
 		super.onDestroy();
-	}	
-	
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getSupportMenuInflater();
-		menuInflater.inflate(R.menu.general, menu);
-		
-		SharedPreferences prefs = getSharedPreferences("LogInPreferences", Context.MODE_PRIVATE);
-		login = prefs.getBoolean("logIn", false);
-		if(login)
-			menu.findItem(R.id.menu_login).setTitle(prefs.getString("usuarioActual", getString(R.string.menu_login).toUpperCase()));
-		else 
-			menu.findItem(R.id.menu_login).setTitle(getString(R.string.menu_login));
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			startActivity(new Intent(VotarActivity.this, LocalesActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-			break;
-		case R.id.menu_login:
-			iniciarMiPerfil();
-			break;
-		case R.id.menu_location:
-			startActivity(new Intent(VotarActivity.this, UbicacionActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-			break;
-		}
-		
-		return super.onOptionsItemSelected(item);
 	}
 
 	private void iniciarMiPerfil(){
@@ -381,8 +340,6 @@ public class VotarActivity extends SherlockActivity {
 	}
 	
 	private int queidUsusario(){
-	   /*IDUSUARIO*/
-		int i;
 		SharedPreferences prefs = getSharedPreferences("LogInPreferences", Context.MODE_PRIVATE);
 		return TnUtil.queNumero(prefs.getString("idUsuario","-4"));
 	}
@@ -413,7 +370,6 @@ public class VotarActivity extends SherlockActivity {
 			try {
 	        	String comentario=dameComentario();
 	        	int puntuacion=damePuntuacion();
-				String n=String.valueOf(evento.getIdEvento());
 				res = Conexion.registrarComentarioYPuntuacion(
 												idUsuario,
 												evento.getIdEvento(), 

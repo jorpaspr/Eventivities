@@ -3,7 +3,6 @@ package com.eventivities.android;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
@@ -17,22 +16,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 import com.eventivities.android.excepciones.ExcepcionAplicacion;
 import com.eventivities.android.servicioweb.Conexion;
 
-public class MiPerfilActivity extends SherlockActivity {
+public class MiPerfilActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mi_perfil);
-		getSupportActionBar().setHomeButtonEnabled(true);
 		getSherlock().setProgressBarIndeterminateVisibility(false);
 		
 		Button btnAceptar = (Button) findViewById(R.id.buttonLogIn);
@@ -152,50 +146,11 @@ public class MiPerfilActivity extends SherlockActivity {
 
 		});
 	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getSupportMenuInflater();
-		menuInflater.inflate(R.menu.general, menu);
-		
-		SharedPreferences prefs = getSharedPreferences("LogInPreferences", Context.MODE_PRIVATE);
-		boolean login = prefs.getBoolean("logIn", false);
-		if(login)
-			menu.findItem(R.id.menu_login).setTitle(prefs.getString("usuarioActual", getString(R.string.menu_login).toUpperCase()));
-		else 
-			menu.findItem(R.id.menu_login).setTitle(getString(R.string.menu_login));
-		return true;
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-	}
 
 	@Override
 	protected void onResume() {
 		cargarPreferencias();
 		super.onResume();
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			startActivity(new Intent(MiPerfilActivity.this, LocalesActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-			break;
-		case R.id.menu_login:
-			startActivity(new Intent(MiPerfilActivity.this, MiPerfilActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-			break;
-		case R.id.menu_location:
-			startActivity(new Intent(MiPerfilActivity.this, UbicacionActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-			break;
-		}
-		
-		return super.onOptionsItemSelected(item);
 	}
 	
 	/**
