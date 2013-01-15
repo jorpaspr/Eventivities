@@ -53,6 +53,8 @@ public class MapsActivity extends /*MapActivity*/SherlockMapActivity{
     private Geocoder geoCoder;
     private GeoPoint pointCentrar;
     private List<Local> locales;
+    private List<Local> localesM;
+    private List<Local> localesB;
     private LocationManager milocManager;
     
     public void onCreate(Bundle savedInstanceState){
@@ -79,7 +81,7 @@ public class MapsActivity extends /*MapActivity*/SherlockMapActivity{
  		else{
  				
  			AlertDialog.Builder dialogoGps = new AlertDialog.Builder(this);  
- 	        dialogoGps.setTitle(R.string.mensaje_dialogo_gps);  
+ 	        dialogoGps.setTitle(R.string.Titulo_dialogo_gps);  
  	        dialogoGps.setMessage(R.string.mensaje_dialogo_gps);            
  	        dialogoGps.setCancelable(false); 
  	        dialogoGps.setIcon(R.drawable.icongps);
@@ -172,7 +174,11 @@ public class MapsActivity extends /*MapActivity*/SherlockMapActivity{
 			protected List<Local> doInBackground(Void... arg0) {
 				locales = null;
 				try {
-					locales = Conexion.obtenerLocalesCiudad("Valencia").getLocales();
+					SharedPreferences prefs = getSharedPreferences("UbicacionPreferences", Context.MODE_PRIVATE);
+					int indice = prefs.getInt("ubicacionActual", UbicacionActivity.VALENCIA);
+					String [] ciudades = getResources().getStringArray(R.array.ciudades);
+					String ciudad = ciudades[indice];
+					locales = Conexion.obtenerLocalesCiudad(ciudad).getLocales();
 				} catch (ExcepcionAplicacion e) {
 					e.printStackTrace();
 				}
@@ -281,7 +287,7 @@ public class MapsActivity extends /*MapActivity*/SherlockMapActivity{
 
 	@Override
 	protected void onResume(){
-		invalidateOptionsMenu();
+		supportInvalidateOptionsMenu();
 		super.onResume();
 	}
 	

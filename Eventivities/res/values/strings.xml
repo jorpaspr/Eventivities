@@ -26,6 +26,7 @@
     <string name="boton_maps">Show nearby places</string>
     <string name="formato_hora_inicio">Start time: %s</string>
     <string name="formato_duracion">Length: %s minutes</string>
+    <string name="ruta"></string>
     
     
     <!-- Strings para la clase GPS diálogo -->

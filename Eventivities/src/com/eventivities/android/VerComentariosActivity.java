@@ -42,11 +42,11 @@ public class VerComentariosActivity extends SherlockActivity{
 		if(extras != null ){
 			evento = (Evento) extras.getSerializable(Param.EVENTO.toString());
 			nombreLocal = (String) extras.getString(Param.LOCAL_NOMBRE.toString());
-			listaComentarios=(ListView) findViewById(R.id.comentarios_listView);
+			//listaComentarios=(ListView) findViewById(R.id.comentarios_listView);
+			//comentarios_listView
 			
-			
-			TextView nomL=(TextView) findViewById(R.id.comentarios_nombreTeatro);
-			TextView nomE=(TextView) findViewById(R.id.comentarios_nombreEvento);
+			//TextView nomL=(TextView) findViewById(R.id.comentarios_nombreTeatro);
+			//TextView nomE=(TextView) findViewById(R.id.comentarios_nombreEvento);
 			
 			//ESTO NO ESCRIBE... explota
 			
@@ -63,7 +63,7 @@ public class VerComentariosActivity extends SherlockActivity{
 	
 	@Override
 	protected void onResume(){
-		invalidateOptionsMenu();
+		supportInvalidateOptionsMenu();
 		super.onResume();
 	}
 	
@@ -148,7 +148,7 @@ public class VerComentariosActivity extends SherlockActivity{
 		@Override
 		protected void onPostExecute(List<Comentario> result) {
 			if (result != null) {
-				setContentView(R.layout.activity_eventos);
+				setContentView(R.layout.activity_ver_comentarios);
 				ListView listView = (ListView) findViewById(android.R.id.list);
 				ComentariosAdapter adapter = new ComentariosAdapter(getApplicationContext(), R.layout.item_comentario, comentarios);
 				listView.setAdapter(adapter);

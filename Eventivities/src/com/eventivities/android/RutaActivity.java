@@ -27,8 +27,8 @@ public class RutaActivity extends Activity {
 	private LocationListener miLocationListener;
 	private double latActual;
 	private double lonActual;
-	private double latDestino;
-	private double lonDestino;
+	private String latDestino;
+	private String lonDestino;
 	
 	
 	public void onCreate (Bundle savedInstanceState){
@@ -36,8 +36,8 @@ public class RutaActivity extends Activity {
 		
 		//forma de pasar parámetros al hacer un new activity
 		Bundle bundle = getIntent().getExtras();
-		latActual = bundle.getDouble("latActual");
-		lonActual = bundle.getDouble("lonActual");
+		latDestino = bundle.getString("LATITUD");
+		lonDestino = bundle.getString("LONGITUD");
 		
 		
 		 LocationManager milocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -73,12 +73,6 @@ public class RutaActivity extends Activity {
  	        });            
  	        dialogoGps.show();        
  	    }//del else
-		
-		
-    	/* String uri = "http://maps.google.com/maps?saddr="+latActual+","+lonActual+"&daddr="+latDestino+","+lonDestino;
-    	 Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
-    	 intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-    	 startActivity(intent);*/
 	}
 
 	
@@ -99,8 +93,8 @@ public class RutaActivity extends Activity {
          * loc.getLXXX() * 1E6;  <- no hace falta.
          */
         	
-    	double latActual = loc.getLatitude();
-		double lonActual = loc.getLongitude();
+    	 latActual = loc.getLatitude();
+		 lonActual = loc.getLongitude();
 			
 		 String uri = "http://maps.google.com/maps?saddr="+latActual+","+lonActual+"&daddr="+latDestino+","+lonDestino;
     	 Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));

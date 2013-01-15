@@ -8,14 +8,20 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.InputFilter.LengthFilter;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.internal.widget.IcsAdapterView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
@@ -29,7 +35,6 @@ public class LocalesActivity extends SherlockActivity {
 
 	private List<Local> locales = null;
 	private String ciudad;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +53,18 @@ public class LocalesActivity extends SherlockActivity {
 			Bundle b = new Bundle();
 			b.putInt(Param.LOCAL_ID.toString(), local.getIdLocal());
 			b.putString(Param.LOCAL_NOMBRE.toString(), local.getNombreLocal());
+
+			b.putString("LATITUD",local.getLatitud());
+			b.putString("LONGITUD", local.getLongitud());
+
 			i.putExtras(b);
 
 			startActivity(i);
 		}
 	};
 	
+	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater menuInflater = getSupportMenuInflater();
@@ -87,7 +98,7 @@ public class LocalesActivity extends SherlockActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	/**
+		/**
 	 * Método que actualiza la apariencia de los botones de Teatro y Cine cuando se pulsa uno de ellos.
 	 * 
 	 * @author emilio
@@ -134,12 +145,12 @@ public class LocalesActivity extends SherlockActivity {
 		@Override
 		protected void onPostExecute(List<Local> result) {
 			if (result != null) {
-				setContentView(R.layout.activity_locales);	
+				setContentView(R.layout.activity_locales);		        
+		        		
 				GridView gridView = (GridView) findViewById(R.id.GridViewLocales);
 				LocalesAdapter adapter = new LocalesAdapter(getApplicationContext(), R.layout.item_local, result);
 				gridView.setAdapter(adapter);
 				gridView.setOnItemClickListener(itemClickListener);
-				
 				Button btnTeatro = (Button) findViewById(R.id.buttonTeatro);
 				btnTeatro.setOnClickListener(new OnClickListener(){
 					public void onClick(View v){
@@ -188,7 +199,7 @@ public class LocalesActivity extends SherlockActivity {
 		
 		setTitle(ciudad);
 		
-		invalidateOptionsMenu();
+		supportInvalidateOptionsMenu();
 		
 		super.onResume();
 	}
