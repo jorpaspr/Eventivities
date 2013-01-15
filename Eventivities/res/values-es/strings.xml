@@ -2,17 +2,13 @@
 <resources>
 
     <string name="app_name">Eventivities</string>
-    <string name="hello_world">¡Hola mundo!</string>
-    <string name="menu_settings">Settings</string>
     <string name="menu_login">Iniciar sesión</string>
     <string name="title_activity_locales">Eventivities</string>
     <string name="title_activity_ver_comentarios">Comentarios</string>
     <string name="title_activity_mi_perfil">Mi perfil</string>
-    <string name="title_activity_registrarse">Registrarse</string>
     <string name="title_activity_eventos">Eventos</string>
     <string name="title_activity_votar">Votar</string>
     <string name="title_activity_ubicacion">Ubicación</string>
-    <string name="title_activity_ver_fotos_de">Ver fotos</string>
     <string name="title_activity_detalle_evento">Detalle del evento</string>
     <string name="error_conexion">No se pudo establecer la conexión con el servidor. Pulse el botón de actualizar para volver a intentarlo.</string>
     <string name="formato_rango_fecha">Del %1$s al %2$s</string>
@@ -28,9 +24,9 @@
     <string name="formato_duracion">Duración: %s minutos</string>
     
     <!-- Strings para la clase GPS diálogo -->
-	<string name="gps_signal_not_found">Señal Gps no encontrada</string>	
-    <string name="Titulo_dialogo_gps">Señal Gps no encontrada</string>
-    <string name="mensaje_dialogo_gps">¿Ir a las opciones del Gps?</string>
+	<string name="gps_signal_not_found">Señal GPS no encontrada</string>	
+    <string name="Titulo_dialogo_gps">Señal GPS no encontrada</string>
+    <string name="mensaje_dialogo_gps">¿Ir a las opciones del GPS?</string>
     <string name="mensaje_dialogo_gps_btn_cancelar">Cancelar</string>
     <string name="mensaje_dialogo_gps_btn_aceptar">Aceptar</string>
      
@@ -44,36 +40,36 @@
 	<!-- Strings de votar y ver comentarios -->
 	<string name="compartir">Comparte</string>
     <string name="comentarios_Votar">Vota</string>
-    <string name="comentarios_ErrorBD">No se encuentra BD \n por favor, prueba mas tarde</string>
-    <string name="comentarios_NoHay">nadia ha escrito un comentario\n se el primero</string>
-    <string name="comentarios_NoHayComentarios">no puedo encontrar informacion\n por favor, prueba mas tarde</string>
-    <string name="votar_puntuacion">¿ Te gusto ?</string>
+    <string name="comentarios_ErrorBD">No se encuentra BD.\n Por favor, prueba más tarde</string>
+    <string name="comentarios_NoHay">Nadie ha escrito un comentario.\nSé el primero</string>
+    <string name="comentarios_NoHayComentarios">No puedo encontrar información\n.Por favor, prueba más tarde</string>
+    <string name="votar_puntuacion">¿Te gustó?</string>
     <string name="votar_miOpinion">Comenta con nosotros</string>
     <string name="votar_botonVotar">Vota</string>
     <string name="votar_compartir_heEstado">He estado en </string>
     <string name="votar_compartir_viendo">viendo</string>
-    <string name="votar_compartir_ceroEstrella">y no me gusto</string>
+    <string name="votar_compartir_ceroEstrella">y no me gustó</string>
     <string name="votar_compartir_unaEstrella">y se puede ver</string>
-    <string name="votar_compartir_dosEstrella">y esta bastante bien</string>
-    <string name="votar_compartir_tresEstrella">y me gusto</string>
-    <string name="votar_compartir_cuatroEstrella">y me gusto mucho</string>
-    <string name="votar_compartir_cincoEstrella">y me parecio excelente</string>
+    <string name="votar_compartir_dosEstrella">y está bastante bien</string>
+    <string name="votar_compartir_tresEstrella">y me gustó</string>
+    <string name="votar_compartir_cuatroEstrella">y me gustó mucho</string>
+    <string name="votar_compartir_cincoEstrella">y me pareció excelente</string>
     <string name="votar_compartir_sinComentario"> - sin comentarios -</string>
-    <string name="votar_noEstaLoginDialogTitulo"> ¿Login?</string>
-    <string name="votar_noEstaLoginDialogTitulo_texto">  Solo puedes Votar \n  si has hecho login  </string>
-    <string name="votar_noEstaLoginDialogTitulo_botonSi"> Login  </string>
-    <string name="votar_noEstaLoginDialogTitulo_botonNo"> Cancelar </string>
-	<string name="votar_noEstaLoginDialogNoSePuedeVotarTitulo"> No puedo Votar  </string>    
-	<string name="votar_noEstaLoginDialogNoSePuedeVotarTexto"> un error ha ocurrido \n y no puedes votar ahora \n\n intentalo luego, gracias \n </string>
-	<string name="votar_noEstaLoginDialogNoSePuedeVotarBoton"> Continuar </string>
-	<string name="votar_soloSePuedeVotarUnaVez"> Solo un Voto </string>
-	<string name="votar_tuYaHasVotado"> y tu ya has votado\n a este evento </string>
+    <string name="votar_noEstaLoginDialogTitulo">¿Login?</string>
+    <string name="votar_noEstaLoginDialogTitulo_texto">Sólo puedes Votar\nsi has hecho login</string>
+    <string name="votar_noEstaLoginDialogTitulo_botonSi">Login</string>
+    <string name="votar_noEstaLoginDialogTitulo_botonNo">Cancelar</string>
+	<string name="votar_noEstaLoginDialogNoSePuedeVotarTitulo">No puedo Votar</string>    
+	<string name="votar_noEstaLoginDialogNoSePuedeVotarTexto">Un error ha ocurrido \n y no puedes votar ahora.\n\n Inténtalo luego, gracias \n</string>
+	<string name="votar_noEstaLoginDialogNoSePuedeVotarBoton">Continuar</string>
+	<string name="votar_soloSePuedeVotarUnaVez">Sólo un Voto</string>
+	<string name="votar_tuYaHasVotado"> y tú ya has votado\n a este evento </string>
 	
-	<string name="votar_ErrorAlVotarTitulo"> Error  </string>		
-	<string name="votar_ErrorAlVotarTxt"> Ha ocurrido un error mientras se intentaba guardar el voto\n\n espera unos momentos y prueba de nuevo, gracias </string>
-	<string name="votar_ErrorAlVotarBoton"> Continue </string>
+	<string name="votar_ErrorAlVotarTitulo">Error</string>		
+	<string name="votar_ErrorAlVotarTxt">Ha ocurrido un error mientras se intentaba guardar el voto.\n\n Espera unos momentos y prueba de nuevo, gracias</string>
+	<string name="votar_ErrorAlVotarBoton">Continuar</string>
 	    	    
-	<string name="votar_ExitoAlVotar"> Tu voto y comentario se ha guardado \n\n gracias por compartir tu opinin </string>
+	<string name="votar_ExitoAlVotar">Tu voto y comentario se ha guardado \n\n gracias por compartir tu opinión</string>
 	<string name="votar_VotoOk"> guardado </string>
 	
 	<string name="detalle_eventoBotonComentarios">Ver comentarios</string>
@@ -82,7 +78,7 @@
     <string name="textUserName">Usuario:</string>
     <string name="textUserPassword">Contraseña:</string>    
     <string name="textButtonLogIn">Aceptar</string>
-    <string name="textButtonLogOut">Salir</string>
+    <string name="textButtonLogOut">Cerrar sesión</string>
     <string name="textButtonRegistrar">Registro</string> 
     <string name="textLoginOk">Login realizado con éxito</string>
     <string name="textLoginServerError">Login no realizado. Compruebe su conexión a internet.</string>

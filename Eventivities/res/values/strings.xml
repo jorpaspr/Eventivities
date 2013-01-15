@@ -2,17 +2,13 @@
 <resources>
 
     <string name="app_name">Eventivities</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="menu_login">Login</string>
+    <string name="menu_login">Log in</string>
     <string name="title_activity_locales">Eventivities</string>
     <string name="title_activity_ver_comentarios">Comments</string>
     <string name="title_activity_mi_perfil">My Profile</string>
-    <string name="title_activity_registrarse">Register</string>
     <string name="title_activity_eventos">Events</string>
     <string name="title_activity_votar">Vote</string>
     <string name="title_activity_ubicacion">Location</string>
-    <string name="title_activity_ver_fotos_de">View Photos</string>
     <string name="title_activity_detalle_evento">Event Detail</string>
     <string name="error_conexion">Connection error. Click the refresh button to retry.</string>
     <string name="formato_rango_fecha">From %1$s to %2$s</string>
@@ -33,7 +29,7 @@
      <string name="Titulo_dialogo_gps">GPS Signal not found</string>
      <string name="mensaje_dialogo_gps">Go to the GPS options?</string>
      <string name="mensaje_dialogo_gps_btn_cancelar">Cancel</string>
-     <string name="mensaje_dialogo_gps_btn_aceptar">Acept</string>
+     <string name="mensaje_dialogo_gps_btn_aceptar">Accept</string>
      
     <!-- Strings para la clase Maps diálogo -->
 	<string name="dialogoErrorConexion_error">Error</string>
@@ -44,7 +40,7 @@
 
     <!-- Strings de votar y ver comentarios -->
 	    <string name="compartir">Share</string>
-	    <string name="comentarios_Votar">go Vote</string>
+	    <string name="comentarios_Votar">Go Vote</string>
 	    <string name="comentarios_ErrorBD">BD missing \n please come back and try again</string>
 	    <string name="comentarios_NoHay">nobody write anything about\n going first</string>
 	    <string name="comentarios_NoHayComentarios">can\'t find information\n please come back and try again</string>
@@ -61,34 +57,34 @@
 	    <string name="votar_compartir_cincoEstrella">and it\'s excellent</string>
 	    <string name="votar_compartir_sinComentario"> - no comment -</string>
 	    <string name="votar_noEstaLoginDialogTitulo"> Login?</string>
-	    <string name="votar_noEstaLoginDialogTitulo_texto">    Only can vote\n     if you are login  </string>
+	    <string name="votar_noEstaLoginDialogTitulo_texto">    Only can vote\n     if you are logged in  </string>
 	    <string name="votar_noEstaLoginDialogTitulo_botonSi"> Login  </string>
 	    <string name="votar_noEstaLoginDialogTitulo_botonNo"> Cancel  </string>
 		<string name="votar_noEstaLoginDialogNoSePuedeVotarTitulo"> Can\'t Vote  </string>    
-		<string name="votar_noEstaLoginDialogNoSePuedeVotarTexto"> an error has occurred \n and you can vote right now\n\n try later, thanks \n </string>
-		<string name="votar_noEstaLoginDialogNoSePuedeVotarBoton"> Continue </string>
-		<string name="votar_soloSePuedeVotarUnaVez"> Only vote once </string>
+		<string name="votar_noEstaLoginDialogNoSePuedeVotarTexto">An error has occurred \nand you cannot vote right now.\n\n Try later, thanks \n </string>
+		<string name="votar_noEstaLoginDialogNoSePuedeVotarBoton">Continue</string>
+		<string name="votar_soloSePuedeVotarUnaVez">Only vote once</string>
 		<string name="votar_tuYaHasVotado"> and you already voted\n for this event </string>
 		
 		<string name="votar_ErrorAlVotarTitulo"> Error </string>		
-		<string name="votar_ErrorAlVotarTxt"> an error happned with conexion or saving your vote\n\n wait a moment and try .. thanks </string>
+		<string name="votar_ErrorAlVotarTxt">An error happened with connection or saving your vote.\n\nWait a moment and try again&#8230; thanks </string>
 		<string name="votar_ErrorAlVotarBoton"> Continue </string>
 		    	    
-		<string name="votar_ExitoAlVotar"> Your Vote and comment has registered \n\n thanks for you opinion </string>
+		<string name="votar_ExitoAlVotar"> Your Vote and comment has been registered \n\n thanks for you opinion </string>
 		<string name="votar_VotoOk"> Saved  </string>
 	    <string name="detalle_eventoBotonComentarios">Show comments</string>	    
     
     <!--Strings de activity_mi_perfil.xml  -->
     <string name="textUserName">Username:</string>
     <string name="textUserPassword">Password:</string>    
-    <string name="textButtonLogIn">Accept</string>
-    <string name="textButtonLogOut">Exit</string>
+    <string name="textButtonLogIn">Log in</string>
+    <string name="textButtonLogOut">Log out</string>
     <string name="textButtonRegistrar">Sign up</string>    
 	<string name="textLoginOk">Login succeed</string>
 	<string name="textLoginServerError">Login error.Verify your connection</string>
 	<string name="textDatosErroneos">Username or password isn\'t correct. Please verify these and try again</string>
 	<string name="textErrorRegistro">Registration failed. Verify your connection.</string>
-	<string name="textRegistroOk">Registration succed</string>
+	<string name="textRegistroOk">Registration succeed</string>
 	<string name="textoCabeceraDialogo">Continue?</string>
     <string name="textoMensajeDialogo">Registration will be done with:\n\n</string>
     <string name="textoBotonContinuar">Accept</string>
