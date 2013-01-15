@@ -1,8 +1,6 @@
 package com.eventivities.android;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -11,17 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.eventivities.android.domain.Evento;
 import com.eventivities.android.util.ImageAsyncHelper;
+import com.eventivities.android.util.ImageAsyncHelper.ImageAsyncHelperCallBack;
 import com.eventivities.android.util.TnUtil;
 import com.eventivities.android.util.ViewUtil;
-import com.eventivities.android.util.ImageAsyncHelper.ImageAsyncHelperCallBack;
 
-public class DetalleEventoActivity extends SherlockActivity {
+public class DetalleEventoActivity extends BaseActivity {
 	
 	private Evento evento;
 	private String nombreLocal;
@@ -30,7 +24,6 @@ public class DetalleEventoActivity extends SherlockActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_evento);
-		getSupportActionBar().setHomeButtonEnabled(true);
         
         Bundle extras = getIntent().getExtras();
 		if(extras != null)
@@ -123,25 +116,6 @@ public class DetalleEventoActivity extends SherlockActivity {
 		}
     }
 	
-	@Override
-	protected void onResume(){
-		supportInvalidateOptionsMenu();
-		super.onResume();
-	}
-    
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getSupportMenuInflater();
-		menuInflater.inflate(R.menu.general, menu);
-		SharedPreferences prefs = getSharedPreferences("LogInPreferences", Context.MODE_PRIVATE);
-		boolean login = prefs.getBoolean("logIn", false);
-		if(login)
-			menu.findItem(R.id.menu_login).setTitle(prefs.getString("usuarioActual", getString(R.string.menu_login).toUpperCase()));
-		else 
-			menu.findItem(R.id.menu_login).setTitle(getString(R.string.menu_login));
-		return true;
-	}
-	
 	public void verComentarios(View v){
 
 		TnUtil.vibrar(this);
@@ -157,8 +131,6 @@ public class DetalleEventoActivity extends SherlockActivity {
 			TnUtil.escribeLog("¿ Una Excepcionnn ?!! \n"+e.getCause());
 			Toast.makeText(this , "\n No se ha podido presentar los Comentarios \n\n",Toast.LENGTH_SHORT).show();
 		}
-    	//
-    		
 	}
 
 	public void aVotar(View v){
@@ -171,25 +143,5 @@ public class DetalleEventoActivity extends SherlockActivity {
 		i.putExtras(b);
 		startActivity(i);
 		
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			startActivity(new Intent(DetalleEventoActivity.this, LocalesActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-			break;
-		case R.id.menu_login:
-			startActivity(new Intent(DetalleEventoActivity.this, MiPerfilActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-			break;
-		case R.id.menu_location:
-			startActivity(new Intent(DetalleEventoActivity.this, UbicacionActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-			break;
-		}
-		
-		return super.onOptionsItemSelected(item);
 	}
 }
