@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Eventivities</string>
+    <string name="menu_login">Log in</string>
+    <string name="title_activity_locales">Eventivities</string>
+    <string name="title_activity_ver_comentarios">Comments</string>
+    <string name="title_activity_mi_perfil">My Profile</string>
+    <string name="title_activity_eventos">Events</string>
+    <string name="title_activity_votar">Vote</string>
+    <string name="title_activity_ubicacion">Location</string>
+    <string name="title_activity_detalle_evento">Event Detail</string>
+    <string name="error_conexion">Connection error. Click the refresh button to retry.</string>
+    <string name="formato_rango_fecha">From %1$s to %2$s</string>
+    <string name="formato_precio">%.2f €</string>
+    <string name="formato_director">Directed by %s</string>
+    <string name="formato_interpretes">Interpreted by %s</string>
+    <string name="title_activity_maps">Maps</string>
+    <string name="title_activity_rutas">Routes</string>
+    <string name="ubicacion">Your current location is set as</string>
+    <string name="boton_cambiar">Change location&#8230;</string>
+    <string name="boton_maps">Show nearby places</string>
+    <string name="formato_hora_inicio">Start time: %s</string>
+    <string name="formato_duracion">Length: %s minutes</string>
+    <string name="ruta"></string>
+
+
+    <!-- Strings para la clase GPS diálogo -->
+    <string name="gps_signal_not_found">GPS Signal not found</string>
+    <string name="Titulo_dialogo_gps">GPS Signal not found</string>
+    <string name="mensaje_dialogo_gps">Go to the GPS options?</string>
+    <string name="mensaje_dialogo_gps_btn_cancelar">Cancel</string>
+    <string name="mensaje_dialogo_gps_btn_aceptar">Accept</string>
+
+    <!-- Strings para la clase Maps diálogo -->
+    <string name="dialogoErrorConexion_error">Error</string>
+    <string name="dialogoErrorConexion_mensaje">Could not connect</string>
+
+    <!-- Strings para la clase ParticularizedOverlay diálogo -->
+    <string name="dialogoInfo_local_YES">OK</string>
+
+    <!-- Strings de votar y ver comentarios -->
+    <string name="compartir">Share</string>
+    <string name="comentarios_Votar">Go Vote</string>
+    <string name="comentarios_ErrorBD">BD missing \n please come back and try again</string>
+    <string name="comentarios_NoHay">nobody write anything about\n going first</string>
+    <string name="comentarios_NoHayComentarios">can\'t find information\n please come back and try again</string>
+    <string name="votar_puntuacion">Do you Like it?</string>
+    <string name="votar_miOpinion">Write a Comment</string>
+    <string name="votar_botonVotar">Vote</string>
+    <string name="votar_compartir_heEstado">I was in </string>
+    <string name="votar_compartir_viendo">looking at</string>
+    <string name="votar_compartir_ceroEstrella">and do not like</string>
+    <string name="votar_compartir_unaEstrella">and something can be seen</string>
+    <string name="votar_compartir_dosEstrella">and it\'s almost fine</string>
+    <string name="votar_compartir_tresEstrella">and it\'s good</string>
+    <string name="votar_compartir_cuatroEstrella">and it\'s very good</string>
+    <string name="votar_compartir_cincoEstrella">and it\'s excellent</string>
+    <string name="votar_compartir_sinComentario"> - no comment -</string>
+    <string name="votar_noEstaLoginDialogTitulo"> Login?</string>
+    <string name="votar_noEstaLoginDialogTitulo_texto">    Only can vote\n     if you are logged in  </string>
+    <string name="votar_noEstaLoginDialogTitulo_botonSi"> Login  </string>
+    <string name="votar_noEstaLoginDialogTitulo_botonNo"> Cancel  </string>
+    <string name="votar_noEstaLoginDialogNoSePuedeVotarTitulo"> Can\'t Vote  </string>
+    <string name="votar_noEstaLoginDialogNoSePuedeVotarTexto">An error has occurred \nand you cannot vote right now.\n\n Try later, thanks \n </string>
+    <string name="votar_noEstaLoginDialogNoSePuedeVotarBoton">Continue</string>
+    <string name="votar_soloSePuedeVotarUnaVez">Only vote once</string>
+    <string name="votar_tuYaHasVotado"> and you already voted\n for this event </string>
+
+    <string name="votar_ErrorAlVotarTitulo"> Error </string>
+    <string name="votar_ErrorAlVotarTxt">An error happened with connection or saving your vote.\n\nWait a moment and try again&#8230; thanks </string>
+    <string name="votar_ErrorAlVotarBoton"> Continue </string>
+
+    <string name="votar_ExitoAlVotar"> Your Vote and comment has been registered \n\n thanks for you opinion </string>
+    <string name="votar_VotoOk"> Saved  </string>
+    <string name="detalle_eventoBotonComentarios">Show comments</string>
+
+    <!--Strings de activity_mi_perfil.xml  -->
+    <string name="textUserName">Username:</string>
+    <string name="textUserPassword">Password:</string>
+    <string name="textButtonLogIn">Log in</string>
+    <string name="textButtonLogOut">Log out</string>
+    <string name="textButtonRegistrar">Sign up</string>
+    <string name="textLoginOk">Login succeed</string>
+    <string name="textLoginServerError">Login error.Verify your connection</string>
+    <string name="textDatosErroneos">Username or password isn\'t correct. Please verify these and try again</string>
+    <string name="textErrorRegistro">Registration failed. Verify your connection.</string>
+    <string name="textRegistroOk">Registration succeed</string>
+    <string name="textoCabeceraDialogo">Continue?</string>
+    <string name="textoMensajeDialogo">Registration will be done with:\n\n</string>
+    <string name="textoBotonContinuar">Accept</string>
+    <string name="textoBotonCancelar">Cancel</string>
+    <string name="textAliasDuplicado">Duplicate Community Nickname. Another user has already selected this nickname.\nPlease select another.</string>
+    <!-- Strings botones LocalesActivity -->
+    <string name="textoTeatro">Theatres</string>
+    <string name="textoCines">Cinemas</string>
+
+    <string name="hello_world">Hello world!</string>
+</resources>

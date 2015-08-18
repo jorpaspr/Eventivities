@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<item android:id="@+id/menu_refresh"
+    android:showAsAction="always"
+    android:visible="false"
+    android:icon="@drawable/ic_menu_refresh_holo_light"/>
+
+<item
+    android:id="@+id/menu_location"
+    android:showAsAction="always"
+    android:icon="@drawable/location"/>
+
+<item
+    android:id="@+id/menu_login"
+    android:showAsAction="always"
+    android:title="@string/menu_login"/>
+
+</menu>
+
+<!--<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools" tools:context=".LocalesActivity">
+<item android:id="@+id/action_settings" android:title="@string/action_settings"
+    android:orderInCategory="100" />
+</menu>-->
